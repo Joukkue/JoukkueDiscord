@@ -28,5 +28,5 @@ async def on_message(msg): #msg.content löytää tekstin mitä viestissä on
         print(msg.channel)
     await client.process_commands(msg) #So that commands may be used
 
-client.run("MzUxMjkzNDU3NjEzOTc5NjU4.DIQflg.mUXZck40bzRLg9HOA9QC48nWSTs")
+client.run("NDIwMTc0MTEzNjk3NjkzNjk2.DX63sw.xPWspVpcxHCrYldd3hqadsN9xEA")
 
