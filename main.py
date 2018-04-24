@@ -48,7 +48,7 @@ import sys
 async def udp_client(asd):
 
     HOST = "127.0.0.1"
-    PORT = 80
+    PORT = 8250
 
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
