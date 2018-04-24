@@ -2,6 +2,7 @@ import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
+import json
 
 client = discord.Client()
 client = commands.Bot(command_prefix="/")
@@ -64,9 +65,12 @@ async def udp_client(asd):
             d = s.recvfrom(1024)
             reply = d[0].decode()
             addr = d[1]
+            message = json.loads(reply)
             if not reply:
                 break
-            await client.send_message(discord.Object(id='351285503116443668'), reply)
+            embed = discord.Embed(title=message['chat']["title"], color=0x00ff00)
+            embed.add_field(name=message['from']['username'], value=message['text'], inline=False)
+            await client.send_message(discord.Object(id='351285503116443668'), embed=embed)
             print("Server reply: " + reply)
 
         except socket.timeout:
