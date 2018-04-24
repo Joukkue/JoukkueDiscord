@@ -40,7 +40,7 @@ async def on_reaction_add(reaction, user):
     #print(reaction.message.channel)
     if reaction.message.author.name == "Joukkue-Bot":
         await client.send_message(reaction.message.channel, text)
-client.run("NDIwMTc0MTEzNjk3NjkzNjk2.DX63sw.xPWspVpcxHCrYldd3hqadsN9xEA")
+
 
 import socket
 import sys
@@ -73,5 +73,6 @@ def udp_client(asd):
 
 _thread.start_new_thread(udp_client, ("client-1",))
 
-client.run("MzUxMjkzNDU3NjEzOTc5NjU4.DX65NA.sqfgxgvL9aaaX0zSlvxBoWckx0M")
+client.run("NDIwMTc0MTEzNjk3NjkzNjk2.DX63sw.xPWspVpcxHCrYldd3hqadsN9xEA")
+#client.run("MzUxMjkzNDU3NjEzOTc5NjU4.DX65NA.sqfgxgvL9aaaX0zSlvxBoWckx0M")
 
