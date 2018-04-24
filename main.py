@@ -1,13 +1,13 @@
 import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
-import server
-
+import asyncio
 
 client = discord.Client()
 client = commands.Bot(command_prefix="/")
 @client.event
 async def on_ready():
+    await udp_client("asd")
     print("The bot is online")
 
 @client.command(pass_context=True)
@@ -43,9 +43,9 @@ async def on_reaction_add(reaction, user):
 
 import socket
 import sys
-import _thread
 
-def udp_client(asd):
+async def udp_client(asd):
+
     HOST = "127.0.0.1"
     PORT = 80
 
@@ -58,19 +58,25 @@ def udp_client(asd):
     s.bind((HOST, PORT))
 
     while True:
+        await custom_sleep(1)
         try:
+            s.settimeout(1)
             d = s.recvfrom(1024)
             reply = d[0].decode()
             addr = d[1]
-            client.send_message("botplayground", reply)
+            if not reply:
+                break
+            await client.send_message(discord.Object(id='351285503116443668'), reply)
             print("Server reply: " + reply)
-        except socket.error as msg:
-            print("Error Code: " + str(msg[0]) + " Message: " + msg[1])
-            sys.exit()
+
+        except socket.timeout:
+            pass
 
 
 
-_thread.start_new_thread(udp_client, ("client-1",))
+async def custom_sleep(time):
+        await asyncio.sleep(time)
+
 
 client.run("MzUxMjkzNDU3NjEzOTc5NjU4.DX65NA.sqfgxgvL9aaaX0zSlvxBoWckx0M")
 
