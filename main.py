@@ -30,6 +30,7 @@ async def on_voice_state_update(before, after):
 @client.event
 async def on_message(msg): #msg.content löytää tekstin mitä viestissä on
     print(msg.content)
+    await forward_message(msg.content)
     if msg.content.startswith("oispa"):
         await client.send_message(msg.channel, "kaljaa")
         print(msg.channel)
@@ -76,10 +77,23 @@ async def udp_client(asd):
         except socket.timeout:
             pass
 
+    s.close()
+
 
 
 async def custom_sleep(time):
         await asyncio.sleep(time)
+
+async def forward_message(msg):
+    HOST = ''
+    PORT = 8252
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.bind((HOST, PORT))
+    addr = ('127.0.0.1', 8253)
+    reply = json.dumps(msg)
+    s.sendto(reply.encode(), addr)
+
+    s.close()
 
 
 client.run("MzUxMjkzNDU3NjEzOTc5NjU4.DX65NA.sqfgxgvL9aaaX0zSlvxBoWckx0M")
