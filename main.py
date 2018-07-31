@@ -3,6 +3,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
 import json
+from credentials import joukkue
 
 client = discord.Client()
 client = commands.Bot(command_prefix="/")
@@ -96,5 +97,5 @@ async def forward_message(msg):
 
 
 
-client.run("MzUxMjkzNDU3NjEzOTc5NjU4.DX65NA.sqfgxgvL9aaaX0zSlvxBoWckx0M")
+client.run(joukkue)
 
