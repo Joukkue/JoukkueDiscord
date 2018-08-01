@@ -31,7 +31,8 @@ async def on_voice_state_update(before, after):
 @client.event
 async def on_message(msg): #msg.content löytää tekstin mitä viestissä on
     if msg.channel.id == '351285503116443668':
-        await forward_message(msg.content)
+        message = "{}\nFrom {}".format(msg.content, msg.author)
+        await forward_message(message)
     if msg.content.startswith("oispa"):
         await client.send_message(msg.channel, "kaljaa")
     await client.process_commands(msg) #So that commands may be used
