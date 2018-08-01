@@ -30,7 +30,8 @@ async def on_voice_state_update(before, after):
 
 @client.event
 async def on_message(msg): #msg.content löytää tekstin mitä viestissä on
-    if msg.channel.id == '351285503116443668':
+    print(msg.author.name)
+    if msg.channel.id == '351285503116443668' and msg.author.name != "Joukkue-Bot":
         message = "{}\nFrom {}".format(msg.content, msg.author)
         await forward_message(message)
     if msg.content.startswith("oispa"):
